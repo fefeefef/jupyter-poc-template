@@ -1,0 +1,46 @@
+# Local Python and Jupyter state
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+build/
+dist/
+.ipynb_checkpoints/
+.DS_Store
+.Rhistory
+
+# Credentials and local configuration
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa*
+
+# Customer data, exports, and generated artifacts
+data/
+datasets/
+customer_data/
+inputs/
+outputs/
+artifacts/
+reports/
+*.csv
+*.tsv
+*.parquet
+*.arrow
+*.feather
+*.xlsx
+*.xls
+*.db
+*.sqlite*
+*.pkl
+*.joblib
+*.npy
+*.npz
+*.pt
+*.pth
+*.ckpt

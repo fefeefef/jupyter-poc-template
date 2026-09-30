@@ -1,0 +1,28 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: check-merge-conflict
+      - id: check-toml
+      - id: check-yaml
+      - id: detect-private-key
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+  - repo: local
+    hooks:
+      - id: ruff-check
+        name: Ruff lint
+        entry: uv run --locked ruff check --force-exclude
+        language: system
+        types_or: [python, pyi, jupyter]
+      - id: ruff-format
+        name: Ruff format
+        entry: uv run --locked ruff format --check --force-exclude
+        language: system
+        types_or: [python, pyi, jupyter]
+      - id: notebook-policy
+        name: Reject stored notebook results
+        entry: uv run --locked python scripts/check_notebooks.py
+        language: system
+        files: \.ipynb$
+        types: [file]
