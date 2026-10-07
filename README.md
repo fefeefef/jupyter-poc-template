@@ -31,6 +31,8 @@ After initializing Git, enable the local hooks:
     uv run --locked pre-commit install
     uv run --locked pre-commit run --all-files
 
+The Ruff lint hook applies only safe fixes for the rules listed in `tool.ruff.lint.fixable`. Other selected rule violations fail the hook. If a hook modifies files, review `git diff`, stage the changes, and retry the commit. Ruff formatting remains a check; run `uv run --locked ruff format .` to apply formatting when needed.
+
 Keep only source code and safe, empty-output notebooks in Git. This empty-output rule is a customer-PoC safeguard chosen for this template, not a verified organization-wide rule. The notebook check validates notebook structure and rejects saved code outputs, execution counts, attachments, and widget state. It does not run cells or detect all confidential text. Keep customer data and credentials outside the repository and review every change before committing. If the project needs approved, synthetic test fixtures, narrow the relevant .gitignore rules explicitly so those fixtures can be tracked without admitting customer data.
 
 CI performs static quality checks, tests, and all Pre-Commit hooks on pushes and pull requests. The hooks check common file hygiene and private-key patterns. Neither workflow runs notebook cells, deploys, or publishes.

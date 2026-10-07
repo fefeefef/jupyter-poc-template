@@ -19,7 +19,7 @@ dev = [
     "nbformat>=5,<6",
     "pre-commit>=4,<5",
     "pytest>=8,<9",
-    "ruff>=0.11,<1",
+    "ruff>=0.12,<1",
 ]
 
 [build-system]
@@ -39,4 +39,150 @@ line-length = 100
 extend-include = ["*.ipynb"]
 
 [tool.ruff.lint]
-select = ["E", "F", "I", "UP"]
+select = [
+    # Detects unused imports.
+    "F401",
+    # Detects loop variables that shadow imported names.
+    "F402",
+    # Flags star imports that prevent reliable name checking.
+    "F403",
+    # Requires __future__ imports at the beginning of the module.
+    "F404",
+    # Detects names that may be undefined because of star imports.
+    "F405",
+    # Rejects star imports inside functions or classes.
+    "F406",
+    # Detects unknown features imported from __future__.
+    "F407",
+    # Detects invalid percent-format string syntax.
+    "F501",
+    # Detects percent formatting that expects a mapping but receives a sequence.
+    "F502",
+    # Detects percent formatting that expects a sequence but receives a mapping.
+    "F503",
+    # Detects unused named arguments in percent formatting.
+    "F504",
+    # Detects missing named arguments in percent formatting.
+    "F505",
+    # Detects mixed positional and named placeholders in percent formatting.
+    "F506",
+    # Detects mismatched placeholder and argument counts in percent formatting.
+    "F507",
+    # Requires a sequence for percent-format width or precision specified with *.
+    "F508",
+    # Detects unsupported percent-format conversion characters.
+    "F509",
+    # Detects invalid format string syntax in str.format calls.
+    "F521",
+    # Detects unused named arguments in str.format calls.
+    "F522",
+    # Detects unused positional arguments in str.format calls.
+    "F523",
+    # Detects missing arguments in str.format calls.
+    "F524",
+    # Detects mixed automatic and manual field numbering in str.format calls.
+    "F525",
+    # Detects f-strings without interpolation placeholders.
+    "F541",
+    # Detects repeated literal keys in dictionaries.
+    "F601",
+    # Detects repeated variable keys in dictionaries.
+    "F602",
+    # Detects too many expressions in starred unpacking assignments.
+    "F621",
+    # Detects multiple starred targets in an unpacking assignment.
+    "F622",
+    # Detects tuple assertions that always evaluate to true.
+    "F631",
+    # Detects identity comparisons with literals that should use equality.
+    "F632",
+    # Detects obsolete print redirection syntax using >>.
+    "F633",
+    # Detects non-empty tuple conditions that always evaluate to true.
+    "F634",
+    # Detects break statements outside loops.
+    "F701",
+    # Detects continue statements outside loops.
+    "F702",
+    # Detects yield or await statements outside the appropriate function context.
+    "F704",
+    # Detects return statements outside functions.
+    "F706",
+    # Requires a bare except handler to be the last exception handler.
+    "F707",
+    # Detects invalid syntax in quoted type annotations.
+    "F722",
+    # Detects redefinitions of names whose previous values were never used.
+    "F811",
+    # Detects names that are used but not defined.
+    "F821",
+    # Detects undefined names listed in __all__.
+    "F822",
+    # Detects local variables referenced before assignment.
+    "F823",
+    # Detects local variables whose values are never used.
+    "F841",
+    # Detects local variable annotations that are never used.
+    "F842",
+    # Requires NotImplementedError instead of raising NotImplemented.
+    "F901",
+    # Checks import sorting and grouping.
+    "I001",
+    # Detects trailing whitespace.
+    "W291",
+    # Checks for a final newline at the end of the file.
+    "W292",
+    # Detects whitespace on otherwise empty lines.
+    "W293",
+    # Detects mutable default arguments that may unintentionally share state between calls.
+    "B006",
+    # Detects function calls in default arguments that run only when the function is defined.
+    "B008",
+    # Detects functions in loops that capture a loop variable whose value changes later.
+    "B023",
+    # Requires an explicit cause when raising a new exception inside an except block.
+    "B904",
+    # Requires an expected message when pytest.raises uses an overly broad exception type.
+    "PT011",
+    # Restricts pytest.raises blocks to the operation being tested.
+    "PT012",
+    # Detects duplicate parametrized test cases.
+    "PT014",
+    # Restricts pytest.warns blocks to the operation being tested.
+    "PT031",
+    # Requires specific rule codes instead of blanket noqa suppressions.
+    "PGH004",
+    # Detects noqa suppressions that do not suppress any current violation.
+    "RUF100",
+    # Detects assignments inside assert statements that disappear when running python -O.
+    "RUF018",
+    # Detects mutable class attributes that may unintentionally share state between instances.
+    "RUF012",
+    # Detects mutable values shared between keys created by dict.fromkeys.
+    "RUF024",
+    # Prefers built-in generic container annotations such as list[int].
+    "UP006",
+    # Prefers modern union annotations such as int | str.
+    "UP007",
+]
+
+# Only these rules may be automatically corrected by --fix.
+# Without --unsafe-fixes, corrections that may change behavior are excluded.
+fixable = [
+    # Automatically sorts and groups imports.
+    "I001",
+    # Removes trailing whitespace.
+    "W291",
+    # Adds a final newline at the end of the file.
+    "W292",
+    # Removes whitespace from otherwise empty lines.
+    "W293",
+    # Removes unused imports when Ruff classifies the correction as safe.
+    "F401",
+    # Removes unnecessary noqa suppressions.
+    "RUF100",
+    # Modernizes container annotations using safe corrections.
+    "UP006",
+    # Modernizes union annotations using safe corrections.
+    "UP007",
+]
