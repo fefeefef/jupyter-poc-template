@@ -16,6 +16,7 @@ notebook = [
 
 [dependency-groups]
 dev = [
+    "coverage>=7.8,<8",
     "nbformat>=5,<6",
     "pre-commit>=4,<5",
     "pytest>=8,<9",
@@ -42,7 +43,7 @@ pythonpath = ["."]
 
 [tool.coverage.run]
 branch = true
-source = ["src/project_name", "scripts"]
+source_dirs = ["src/project_name", "scripts"]
 relative_files = true
 
 [tool.coverage.report]
