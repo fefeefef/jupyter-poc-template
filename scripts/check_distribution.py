@@ -41,7 +41,7 @@ def main() -> None:
                 str(python),
                 "-I",
                 "-c",
-                'from project_name import greet; assert greet("NXAI") == "Hello, NXAI!"',
+                'from project_name import greet; assert greet() == "hello"',
             ],
             cwd=work,
             check=True,

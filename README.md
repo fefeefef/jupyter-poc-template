@@ -57,8 +57,8 @@ when adapting the template.
 ```python
 from project_name import greet
 
-print(greet("NXAI"))
-# Hello, NXAI!
+print(greet())
+# hello
 ```
 
 ## Notebook

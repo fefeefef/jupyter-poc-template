@@ -8,15 +8,8 @@ checkout and must be updated when the real public API replaces it.
 
    from project_name import greet
 
-   print(greet("NXAI"))
-   # Hello, NXAI!
-
-The default is also available:
-
-.. code-block:: python
-
    print(greet())
-   # Hello, world!
+   # hello
 
 The starter notebook runs the same example and contains placeholders for the
 PoC question, inputs, agreed approach, results, and limitations. It does not
