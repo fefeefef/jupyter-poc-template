@@ -10,7 +10,7 @@ dependencies = []
 
 [project.optional-dependencies]
 notebook = [
-    "ipykernel>=6,<7",
+    "ipykernel>=6,<8",
     "jupyterlab>=4,<5",
 ]
 
