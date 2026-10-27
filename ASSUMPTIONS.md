@@ -12,6 +12,16 @@
 - pytest checks the local notebook policy script, which uses nbformat for schema validation. Neither the lint checks nor the policy tests execute notebook cells or verify the analysis results.
 - The empty-output notebook policy is a customer-PoC safeguard selected for this template, not an inferred organization-wide rule. It rejects outputs, non-null execution counts, attachments, and saved widget state. It does not inspect notebook source for sensitive values.
 - Git ignore rules reduce accidental commits of common data, credential, and artifact files. They cannot guarantee confidentiality; human review remains required.
-- GitHub Actions runs the Pre-Commit hooks and validates pushes and pull requests only. No CD, publication, or release automation is included.
+- GitHub Actions runs the Pre-Commit hooks, tests, package build, metadata check, isolated wheel smoke check, and documentation build on pushes and pull requests. No active CD, publication, or release automation is included; inactive preparation examples are outside the workflows directory.
 - Project name, description, responsible team, and license are unresolved TODOs. No license is assumed.
 - CLA policy is separate and is not activated by this template.
+
+- The user-facing README follows the TiRex-2 structure with optional, commented badge placeholders. It does not claim an existing publication or hosted documentation.
+- Sphinx follows the tool explicitly named in the feedback. MyST parses Markdown notes; documentation builds but is not deployed.
+- LICENSE is an intentionally empty placeholder. Maintainers must choose the license, security contact, supported releases, and any response expectations.
+- Dependabot uses the uv ecosystem to update the manifest and lockfile, plus GitHub Actions updates. This adapts the reference to the existing dependency workflow.
+- Line and branch coverage of the package and own scripts was explicitly approved for reporting only. There is no minimum percentage, warning threshold, or merge gate; Codecov upload remains inactive.
+- The workflow is named testing. Package metadata and installation of the built wheel are checked without publishing. The starter wheel has no runtime dependencies; adapt its isolated smoke check when adding dependencies.
+- No additional lint rules, automatic corrections, scientific methods, or notebook failure conditions are introduced by this update. Coverage collection follows the explicit reporting-only decision.
+
+- GitHub Actions references are pinned to verified commit SHAs. CI installs uv 0.13.5; dependency versions remain locked in uv.lock.

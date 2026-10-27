@@ -1,0 +1,8 @@
+# Reporting only when explicitly enabled; no unapproved coverage gates.
+coverage:
+  status:
+    project: false
+    patch: false
+comment: false
+github_checks:
+  annotations: false

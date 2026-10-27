@@ -1,0 +1,31 @@
+# INACTIVE PREPARATION EXAMPLE: active CD is outside the current scope.
+# This is not an executable publishing integration. See docs/publishing.md.
+name: publish
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    if: ${{ false }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@07a047e608db84b3d8c06cd9a7c7dcc9c355c18e # v10.3.2
+        with:
+          version: "0.13.5"
+      - run: uv sync --locked --group dev
+      - run: uv build
+      - run: uv run --locked twine check dist/*
+      # TODO: Transfer the checked artifacts to the publishing job.
+  publish:
+    if: ${{ false }}
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      # TODO: Configure the approved index, authentication, artifact download,
+      # and upload action only after the publishing choices are agreed.
+      - run: echo "Publishing is disabled and no upload action is configured."

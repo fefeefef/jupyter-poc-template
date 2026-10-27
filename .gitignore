@@ -44,3 +44,13 @@ reports/
 *.pt
 *.pth
 *.ckpt
+
+# Coverage reports
+.coverage
+htmlcov/
+.coverage.*
+coverage.xml
+coverage.json
+
+# Generated documentation
+docs/_build/
