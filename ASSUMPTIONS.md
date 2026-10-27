@@ -25,3 +25,7 @@
 - No additional lint rules, automatic corrections, scientific methods, or notebook failure conditions are introduced by this update. Coverage collection follows the explicit reporting-only decision.
 
 - GitHub Actions references are pinned to verified commit SHAs. CI installs uv 0.13.5; dependency versions remain locked in uv.lock.
+
+- The Setuptools build backend is pinned to the version verified for this starter.
+  This controls the backend version without promising byte-identical builds or
+  locked transitive dependencies in Pre-Commit's separate hook environments.

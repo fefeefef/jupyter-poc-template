@@ -16,7 +16,8 @@ adapted repository as a finished project, then remove or archive this setup guid
    a minimal, runnable example. Update the wheel smoke check to exercise that API.
 4. Run `uv lock`, then the locked setup and checks in `CONTRIBUTING.md`.
    `uv build` must create a wheel and source distribution; `twine check` validates
-   their metadata. The distribution smoke check uses a fresh virtual environment,
+   their metadata. `MANIFEST.in` includes the repository scripts needed by the tests
+   shipped in the source distribution. The distribution smoke check uses a fresh virtual environment,
    installs the local wheel, and imports it outside the checkout. Its `--no-deps`
    installation is appropriate for this dependency-free starter only; when adding
    runtime dependencies, arrange their installation in the smoke environment too.
@@ -74,7 +75,7 @@ The upload step in `testing` is off unless the repository Actions variable
 `CODECOV_ENABLED` is `true`. Configure Codecov and any required repository upload
 secret before enabling it. Public repositories that already permit tokenless
 uploads need no secret. See `docs/coverage.md` for activation and verification;
-the separate `.example` workflow does not need to be enabled.
+no separate coverage workflow needs to be enabled.
 
 ## Publishing
 

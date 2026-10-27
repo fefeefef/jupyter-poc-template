@@ -36,6 +36,12 @@ Configuration lives in `pyproject.toml`, `.pre-commit-config.yaml`, and
 remain defined there. Changes to dependencies require `uv lock`; commit both the
 manifest and lockfile. See [Template assumptions](ASSUMPTIONS.md) for inherited choices.
 
+The build backend is pinned in `[build-system]`. Update that pin deliberately and
+rerun the package checks when upgrading it. `uv.lock` fixes the project development
+dependencies; Pre-Commit installs its separately pinned hooks in isolated
+environments whose transitive dependencies are resolved independently. These
+settings do not promise byte-identical builds across Python versions or platforms.
+
 ## Working with notebooks
 
 ```bash

@@ -77,9 +77,8 @@ are visible in the logs but do not block the tests. The root `codecov.yml` keeps
 project/patch statuses, PR comments, and annotations disabled; no percentage gate
 is introduced. GitHub artifact reporting continues independently of Codecov.
 
-The inactive `.github/workflow-templates/coverage.yml.example` remains an optional
-standalone example. The normal activation path is the opt-in step in `testing`;
-there is no need to activate a second workflow or duplicate the test run.
+The opt-in step in `testing` is the single Codecov upload path; no separate
+coverage workflow needs to be activated or maintained.
 
 References: [pytest-cov](https://pytest-cov.readthedocs.io/en/latest/),
 [Branch coverage](https://coverage.readthedocs.io/en/latest/branch.html),
