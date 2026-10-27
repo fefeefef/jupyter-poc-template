@@ -72,7 +72,7 @@ python -m jupyterlab
 
 Open [notebooks/poc.ipynb](notebooks/poc.ipynb). See
 [Contributing](CONTRIBUTING.md) for the locked development environment and the
-existing rule against committing saved notebook results.
+notebook storage requirements.
 
 ## Documentation and contributions
 
@@ -83,5 +83,4 @@ vulnerabilities privately as described in [Security](SECURITY.md).
 
 ## License
 
-No license has been selected. [LICENSE](LICENSE) is intentionally empty until the
-project owners supply an approved license. Do not assume TiRex-2's license applies.
+No license has been selected. Add the project license to [LICENSE](LICENSE).

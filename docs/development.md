@@ -1,6 +1,6 @@
 # Development
 
-The repository's `CONTRIBUTING.md` is the contributor guide for humans and agents.
+The repository's `CONTRIBUTING.md` contains the development instructions.
 The command blocks below are included from that guide so they stay in sync.
 
 ## Environment and tests

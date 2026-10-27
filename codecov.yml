@@ -1,4 +1,4 @@
-# Reporting only when explicitly enabled; no unapproved coverage gates.
+# Coverage reporting without percentage gates.
 coverage:
   status:
     project: false

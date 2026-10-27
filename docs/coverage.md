@@ -1,7 +1,6 @@
 # Coverage and Codecov
 
 Line and branch coverage are measured for `src/project_name` and `scripts`.
-This scope and reporting-only behavior were explicitly approved by the user.
 No minimum percentage, warning threshold, or merge gate is configured.
 
 Line coverage records which executable lines ran. Branch coverage also records
@@ -43,8 +42,8 @@ artifact for seven days. Generated reports and coverage data are ignored by Git.
 Each pytest command above starts a new run; use `coverage run --append` only for
 additional checks belonging to that run, so results do not accumulate across edits.
 
-Tests are outside the measured source scope. There are no custom coverage
-exclusions, percentage thresholds, or automatic changes to code or notebook policy.
+Test files are excluded from measurement. There are no custom coverage exclusions
+or percentage thresholds.
 When renaming the package, update the source path in `pyproject.toml` too.
 
 ## Optional Codecov upload
@@ -61,8 +60,8 @@ To enable it for the actual repository:
 2. For a public repository that already permits tokenless uploads, no upload
    secret is needed. Otherwise, store its Codecov repository token in the GitHub
    Actions secret `CODECOV_TOKEN`; never commit a token. Private repositories
-   require an authenticated upload. OIDC is an alternative but needs its own
-   explicit workflow-permission setup; it is not silently enabled here.
+   require an authenticated upload. OIDC requires separate workflow permissions
+   and authentication configuration.
 3. In GitHub **Settings → Secrets and variables → Actions → Variables**, create
    the repository variable `CODECOV_ENABLED` with the value `true`.
 4. Push a change or rerun `testing`, inspect the Codecov upload step, and verify

@@ -32,9 +32,9 @@ uv run --locked coverage html
 ```
 
 Configuration lives in `pyproject.toml`, `.pre-commit-config.yaml`, and
-`.github/workflows/testing.yml`. Existing lint selections and automatic corrections
-remain defined there. Changes to dependencies require `uv lock`; commit both the
-manifest and lockfile. See [Template assumptions](ASSUMPTIONS.md) for inherited choices.
+`.github/workflows/testing.yml`. Lint checks and automatic corrections
+are configured there. Changes to dependencies require `uv lock`; commit both the
+manifest and lockfile. See [Template configuration](ASSUMPTIONS.md) for the configuration overview.
 
 The build backend is pinned in `[build-system]`. Update that pin deliberately and
 rerun the package checks when upgrading it. `uv.lock` fixes the project development
@@ -51,18 +51,16 @@ uv run --locked --extra notebook jupyter lab
 Keep customer data and credentials outside the repository. Commit notebooks with
 empty code outputs, null execution counts, no attachments, and no saved widget
 state. Use Jupyter's clear-output controls and review the diff before committing.
-The existing notebook checker validates structure and these storage rules; it
+The notebook checker validates structure and these storage rules; it
 neither executes the analysis nor detects all sensitive text.
 
 ## Pull requests
 
 Keep changes focused. Use the PR template to describe the problem, the resulting
-behavior, the commands you actually ran, and anything not verified. Agents should
-report the same evidence and clearly identify unresolved decisions.
+behavior, the commands you ran, and any limitations or unverified behavior.
 
 Run the commands above before opening a PR. Add or update relevant tests when
-behavior changes. Do not invent a coverage threshold, CLA obligation, changelog
-rule, or review response deadline. Those policies belong to the project owners.
+behavior changes.
 
 Report suspected security vulnerabilities through [SECURITY.md](SECURITY.md).
 Do not include secrets, private data, or sensitive logs in issues or pull requests.
@@ -76,8 +74,7 @@ python -m http.server --directory docs/_build/html 8000
 ```
 
 Open http://localhost:8000. Edit user-facing pages under `docs/`; public API
-reference content comes from package docstrings. Sphinx follows the explicit tool
-named in the feedback; MyST lets the coverage and publishing notes remain Markdown.
+reference content comes from package docstrings. Sphinx builds the site; MyST supports Markdown pages.
 No documentation deployment is enabled.
 
 ## Coverage

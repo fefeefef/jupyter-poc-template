@@ -8,8 +8,6 @@ repos:
       - id: check-added-large-files
         args: ['--maxkb=1000']
       - id: check-case-conflict
-      # Disabled in TiRex-2 because of its module-level attribute documentation.
-      # - id: check-docstring-first
       - id: check-executables-have-shebangs
       - id: check-json
       - id: check-shebang-scripts-are-executable
@@ -21,14 +19,9 @@ repos:
       - id: detect-private-key
       - id: end-of-file-fixer
       - id: mixed-line-ending
-      # Optional in TiRex-2; JSON is validated without automatic reformatting.
-      # - id: pretty-format-json
-      #   args: [--autofix, --no-sort-keys]
       - id: name-tests-test
         args: [--pytest-test-first]
         exclude: ^tests/trainer/helpers/
-      # Branch protection should enforce protected branches, including CI merges.
-      # - id: no-commit-to-branch
       - id: trailing-whitespace
   - repo: https://github.com/asottile/pyupgrade
     rev: v3.21.2
@@ -40,7 +33,7 @@ repos:
     hooks:
       - id: ruff
         types_or: [python, pyi, jupyter]
-        # Retains this template's selected rules and safe-fix allowlist.
+        # Apply safe corrections from the fixable allowlist in pyproject.toml.
         args: [--fix]
       - id: ruff-format
         types_or: [python, pyi, jupyter]

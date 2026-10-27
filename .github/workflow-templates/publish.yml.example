@@ -1,5 +1,4 @@
-# INACTIVE PREPARATION EXAMPLE: active CD is outside the current scope.
-# This is not an executable publishing integration. See docs/publishing.md.
+# Disabled publishing example. See docs/publishing.md for configuration.
 name: publish
 on:
   workflow_dispatch:
@@ -26,6 +25,6 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      # TODO: Configure the approved index, authentication, artifact download,
-      # and upload action only after the publishing choices are agreed.
+      # TODO: Configure the package index, authentication, artifact download,
+      # and upload action.
       - run: echo "Publishing is disabled and no upload action is configured."
