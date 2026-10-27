@@ -30,5 +30,5 @@ The build imports the installed package to generate API documentation.
 Documentation dependencies are separate from the package's runtime dependencies.
 
 The ``testing`` workflow builds these pages locally on its runner; it does not
-publish them. Coverage is reported without a percentage gate. Codecov uploads
-and publishing remain inactive.
+publish them. Coverage is reported without a percentage gate. Codecov uploads are
+an explicit repository opt-in; publishing remains inactive.

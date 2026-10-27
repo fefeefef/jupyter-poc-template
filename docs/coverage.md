@@ -49,18 +49,40 @@ When renaming the package, update the source path in `pyproject.toml` too.
 
 ## Optional Codecov upload
 
-Local and GitHub artifact reporting work without Codecov. No coverage report is
-sent to Codecov by the active workflow. The root `codecov.yml` disables project and
-patch status checks, PR comments, and annotations; there is no coverage-dependent
-failure configured.
+The `testing` workflow contains a complete upload step. It runs only when the
+repository Actions variable `CODECOV_ENABLED` is exactly `true`. New repositories
+created from the template do not inherit this variable, so uploads remain off
+until their owners configure and enable the integration.
 
-The inactive `.github/workflow-templates/coverage.yml.example` contains the report
-and upload integration. Enable the actual repository in Codecov and configure its
-upload credentials before adapting that example. Keep tokens in GitHub Actions
-secrets. Remove its explicit false upload condition only after deciding to enable
-that transfer. A first real upload and service permissions must then be verified.
+To enable it for the actual repository:
+
+1. Sign in to Codecov with the repository owner's GitHub account and select the
+   repository. Confirm the account's applicable upload-authentication setting.
+2. For a public repository that already permits tokenless uploads, no upload
+   secret is needed. Otherwise, store its Codecov repository token in the GitHub
+   Actions secret `CODECOV_TOKEN`; never commit a token. Private repositories
+   require an authenticated upload. OIDC is an alternative but needs its own
+   explicit workflow-permission setup; it is not silently enabled here.
+3. In GitHub **Settings → Secrets and variables → Actions → Variables**, create
+   the repository variable `CODECOV_ENABLED` with the value `true`.
+4. Push a change or rerun `testing`, inspect the Codecov upload step, and verify
+   that the dashboard shows the exact tested commit and correct file paths.
+5. Enable the README's Codecov badge only after replacing its owner/repository
+   placeholders and verifying the destination. A badge displays the service's
+   reported coverage and links to its detailed report; it does not run tests.
+
+The upload action accepts an empty token when the service permits tokenless
+uploads. No account security setting is changed by the workflow. Upload failures
+are visible in the logs but do not block the tests. The root `codecov.yml` keeps
+project/patch statuses, PR comments, and annotations disabled; no percentage gate
+is introduced. GitHub artifact reporting continues independently of Codecov.
+
+The inactive `.github/workflow-templates/coverage.yml.example` remains an optional
+standalone example. The normal activation path is the opt-in step in `testing`;
+there is no need to activate a second workflow or duplicate the test run.
 
 References: [pytest-cov](https://pytest-cov.readthedocs.io/en/latest/),
 [Branch coverage](https://coverage.readthedocs.io/en/latest/branch.html),
+[Codecov tokens](https://docs.codecov.com/docs/codecov-tokens),
 [Codecov statuses](https://docs.codecov.com/docs/commit-status),
 [Codecov Action](https://github.com/codecov/codecov-action).

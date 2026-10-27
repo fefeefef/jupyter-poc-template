@@ -43,6 +43,15 @@ jobs:
           uv run --locked coverage report
           uv run --locked coverage xml
           uv run --locked coverage html
+      - name: Upload coverage reports to Codecov (opt-in)
+        if: ${{ vars.CODECOV_ENABLED == 'true' }}
+        continue-on-error: true
+        uses: codecov/codecov-action@303a32d7a59b442fa8d48b6a1cc6825c09c847a5 # v7
+        with:
+          files: coverage.xml
+          disable_search: true
+          token: ${{ secrets.CODECOV_TOKEN }}
+          fail_ci_if_error: false
       - name: Save coverage reports
         continue-on-error: true
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2

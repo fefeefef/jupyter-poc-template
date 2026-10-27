@@ -70,10 +70,11 @@ tested rather than treating the number as proof of quality.
 
 `testing` prints coverage and saves XML/HTML reports as GitHub artifacts.
 `codecov.yml` disables Codecov project and patch statuses and automated comments.
-The optional upload example is inactive in
-`.github/workflow-templates/coverage.yml.example`. Configure Codecov for the real
-repository and explicitly enable uploading before expecting a dashboard or badge.
-See `docs/coverage.md` for the exact measurement and activation commands.
+The upload step in `testing` is off unless the repository Actions variable
+`CODECOV_ENABLED` is `true`. Configure Codecov and any required repository upload
+secret before enabling it. Public repositories that already permit tokenless
+uploads need no secret. See `docs/coverage.md` for activation and verification;
+the separate `.example` workflow does not need to be enabled.
 
 ## Publishing
 

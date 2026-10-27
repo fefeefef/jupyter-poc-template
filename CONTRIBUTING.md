@@ -77,6 +77,6 @@ No documentation deployment is enabled.
 ## Coverage
 
 Line and branch coverage includes the package and own scripts, with no percentage
-gate. See [Coverage](docs/coverage.md) for interpretation and the inactive Codecov
-upload integration. Ordinary `pytest` without `--cov` still runs tests without measurement.
+gate. See [Coverage](docs/coverage.md) for interpretation and the Codecov
+opt-in upload integration. Ordinary `pytest` without `--cov` still runs tests without measurement.
 See [Template setup](TEMPLATE_SETUP.md) when adapting the repository.

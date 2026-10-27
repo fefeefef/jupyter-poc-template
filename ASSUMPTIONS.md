@@ -20,7 +20,7 @@
 - Sphinx follows the tool explicitly named in the feedback. MyST parses Markdown notes; documentation builds but is not deployed.
 - LICENSE is an intentionally empty placeholder. Maintainers must choose the license, security contact, supported releases, and any response expectations.
 - Dependabot uses the uv ecosystem to update the manifest and lockfile, plus GitHub Actions updates. This adapts the reference to the existing dependency workflow.
-- Line and branch coverage of the package and own scripts was explicitly approved for reporting only. There is no minimum percentage, warning threshold, or merge gate; Codecov upload remains inactive.
+- Line and branch coverage of the package and own scripts was explicitly approved for reporting only. There is no minimum percentage, warning threshold, or merge gate; Codecov upload is an explicit opt-in through the repository Actions variable CODECOV_ENABLED; it defaults to off in a newly created repository.
 - The workflow is named testing. Package metadata and installation of the built wheel are checked without publishing. The starter wheel has no runtime dependencies; adapt its isolated smoke check when adding dependencies.
 - No additional lint rules, automatic corrections, scientific methods, or notebook failure conditions are introduced by this update. Coverage collection follows the explicit reporting-only decision.
 
